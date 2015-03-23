@@ -103,8 +103,7 @@ d3.tsv("data.tsv", type, function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-      .text("States");
+      .call(xAxis);
 
   svg.append("g")
       .attr("class", "y axis")
