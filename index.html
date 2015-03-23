@@ -99,7 +99,7 @@ svg.call(tip);
 
 d3.tsv("data.tsv", type, function(error, data) {
   x.domain(data.map(function(d) { return d.state; }));
-  y.domain([0, d3.max(data, function(d) { return d.payments; })]);
+  y.domain([4000, d3.max(data, function(d) { return d.payments; })]);
 
   svg.append("g")
       .attr("class", "x axis")
