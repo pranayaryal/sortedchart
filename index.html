@@ -78,7 +78,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .tickFormat(function(d){return "$" + commasFormatter(d);});
+    .tickFormat(function(d){return "$" + commasFormatter(d-4000);});
     
 
 var tip = d3.tip()
@@ -113,8 +113,7 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Average Total Payments")
-      .forceY([5000,14000]);
+      .text("Average Total Payments");
       
 
   svg.selectAll(".bar")
