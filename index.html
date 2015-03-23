@@ -118,17 +118,17 @@ d3.tsv("data.tsv", type, function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
+      .attr("x", function(d) { return x(d.state); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); })
+      .attr("y", function(d) { return y(d.payments); })
+      .attr("height", function(d) { return height - y(d.payments); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
 
 });
 
 function type(d) {
-  d.frequency = +d.frequency;
+  d.payments = +d.payments;
   return d;
 }
 
