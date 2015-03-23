@@ -113,7 +113,9 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Average Total Payments");
+      .text("Average Total Payments")
+      .forceY([5000,14000]);
+      
 
   svg.selectAll(".bar")
       .data(data)
