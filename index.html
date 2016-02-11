@@ -63,21 +63,21 @@ h1,p {
   <h2>(Source: Hospital Charge Data from data.gov)</h2>
 </head>
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-<script>
-
-var margin = {top: 40, right: 40, bottom: 30, left: 150},
-    width = 1200 - margin.left - margin.right,
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<div class="main">
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var commasFormatter = d3.format(",.0f");
+var formatPercent = d3.format(".0%");
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
 var y = d3.scale.linear()
-    .range([height,0]);
+    .range([height, 0]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -86,14 +86,13 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .tickFormat(function(d){return "$" + commasFormatter(d);});
-    
+    .tickFormat(formatPercent);
 
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>Average Payments: $</strong><span style='color:red'>" + d.payments + "</span>";
+    return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
   })
 
 var svg = d3.select("body").append("svg")
@@ -105,8 +104,8 @@ var svg = d3.select("body").append("svg")
 svg.call(tip);
 
 d3.tsv("data.tsv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.state; }));
-  y.domain([7000, d3.max(data, function(d) { return d.payments; })]);
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -121,25 +120,28 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Average Total Payments");
-      
+      .text("Frequency");
 
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.state); })
+      .attr("x", function(d) { return x(d.letter); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.payments); })
-      .attr("height", function(d) { return height - y(d.payments); })
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
 
 });
 
 function type(d) {
-  d.payments = +d.payments;
+  d.frequency = +d.frequency;
   return d;
 }
 
 </script>
+
+</div>
+
+<script>
