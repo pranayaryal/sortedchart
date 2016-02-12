@@ -70,9 +70,10 @@
 </head>
 <body>
 <div class="main">
-  <label><input class="checked" type="checkbox"> Sort values</label>
+
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<label><input class="checked" type="checkbox"> Sort values</label>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script>
 
@@ -105,7 +106,7 @@
             return "<strong>Average Payments: $</strong><span style='color:red'>" + d.payments + "</span>";
           })
 
-  var svg = d3.select(".main").append("svg")
+  var svg = d3.select("body").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
@@ -149,7 +150,7 @@
   d3.select("input").on("change", change);
 
   var sortTimeout = setTimeout(function() {
-    d3.select(".checked").property("checked", true).each(change);
+    d3.select("input").property("checked", true).each(change);
   }, 2000);
 
   function change() {
