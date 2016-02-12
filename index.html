@@ -72,7 +72,7 @@
       d.payments = +d.payments;
     });
 
-    x.domain(data.map(function(d) { return d.letter; }));
+    x.domain(data.map(function(d) { return d.state; }));
     y.domain([0, d3.max(data, function(d) { return d.payments; })]);
 
     svg.append("g")
