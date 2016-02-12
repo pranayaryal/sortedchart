@@ -115,6 +115,11 @@
   svg.call(tip);
 
   d3.tsv("data.tsv", type, function(error, data) {
+
+    data.forEach(function(d) {
+      d.payments = +d.payments;
+    });
+
     x.domain(data.map(function(d) { return d.state; }));
     y.domain([7000, d3.max(data, function(d) { return d.payments; })]);
 
