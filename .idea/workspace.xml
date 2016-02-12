@@ -24,12 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="data.tsv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data.tsv">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.029368576">
-              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-              <folding />
+            <state vertical-scroll-proportion="0.35389134">
+              <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+              <folding>
+                <marker date="1455260020872" expanded="true" signature="1566:1575" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,9 +44,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/data.tsv" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -182,30 +184,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.380323">
-          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-          <folding>
-            <marker date="1455259408243" expanded="true" signature="45:790" placeholder="..." />
-            <marker date="1455259408243" expanded="true" signature="53:81" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="106:170" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="177:196" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="209:232" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="247:267" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="277:407" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="479:672" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="733:782" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="797:2866" placeholder="..." />
-            <marker date="1455259408243" expanded="true" signature="944:2862" placeholder="..." />
-            <marker date="1455259408243" expanded="true" signature="1493:1606" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="1564:1573" placeholder="..." />
-            <marker date="1455259408243" expanded="true" signature="1919:2787" placeholder="{...}" />
-            <marker date="1455259408243" expanded="true" signature="2808:2852" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data1.tsv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -227,6 +205,16 @@
         <state vertical-scroll-proportion="0.029368576">
           <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35389134">
+          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+          <folding>
+            <marker date="1455260020872" expanded="true" signature="1566:1575" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
