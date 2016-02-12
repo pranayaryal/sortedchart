@@ -24,14 +24,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="data.tsv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data.tsv">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5301028">
-              <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
-              <folding>
-                <marker date="1455260433746" expanded="true" signature="1968:1977" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.029368576">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,9 +42,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data.tsv" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/data.tsv" />
       </list>
     </option>
   </component>
@@ -200,21 +198,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029368576">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5301028">
           <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
           <folding>
+            <marker date="1455260433746" expanded="true" signature="45:916" placeholder="..." />
+            <marker date="1455260433746" expanded="true" signature="55:87" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="96:125" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="154:226" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="235:258" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="273:300" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="317:341" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="353:497" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="573:786" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="851:908" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="923:1035" placeholder="..." />
+            <marker date="1455260433746" expanded="true" signature="1042:3467" placeholder="..." />
+            <marker date="1455260433746" expanded="true" signature="1214:3467" placeholder="..." />
+            <marker date="1455260433746" expanded="true" signature="1897:2018" placeholder="{...}" />
             <marker date="1455260433746" expanded="true" signature="1968:1977" placeholder="..." />
+            <marker date="1455260433746" expanded="true" signature="2364:3385" placeholder="{...}" />
+            <marker date="1455260433746" expanded="true" signature="3408:3457" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.029368576">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
