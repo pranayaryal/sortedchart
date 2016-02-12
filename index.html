@@ -70,7 +70,7 @@
 </head>
 <body>
 <div class="main">
-  <label><input type="checkbox"> Sort values</label>
+  <label><input class="checked" type="checkbox"> Sort values</label>
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -149,7 +149,7 @@
   d3.select("input").on("change", change);
 
   var sortTimeout = setTimeout(function() {
-    d3.select("input").property("checked", true).each(change);
+    d3.select(".checked").property("checked", true).each(change);
   }, 2000);
 
   function change() {
