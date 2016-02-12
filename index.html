@@ -3,12 +3,13 @@
 <style>
 
   body {
-    font: 10px sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 960px;
   }
 
-  h1,p {
-    margin-right:50px;
-
+  .axis text {
+    font: 10px sans-serif;
   }
 
   .axis path,
@@ -19,44 +20,12 @@
   }
 
   .bar {
-    fill: orange;
-  }
-
-  .bar:hover {
-    fill: orangered ;
+    fill: steelblue;
+    fill-opacity: .9;
   }
 
   .x.axis path {
     display: none;
-  }
-
-  .d3-tip {
-    line-height: 1;
-    font-weight: bold;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border-radius: 2px;
-  }
-
-  /* Creates a small triangle extender for the tooltip */
-  .d3-tip:after {
-    box-sizing: border-box;
-    display: inline;
-    font-size: 10px;
-    width: 100%;
-    line-height: 1;
-    color: rgba(0, 0, 0, 0.8);
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
-  }
-
-  /* Style northward tooltips differently */
-  .d3-tip.n:after {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
   }
 
   label {
@@ -64,30 +33,23 @@
     top: 10px;
     right: 10px;
   }
-</style>
-<head><h1>Average Hospital Bill Payments by State</h1>
-  <h2>(Source: Hospital Charge Data from data.gov)</h2>
-</head>
-<body>
-<div class="main">
 
-</div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<label><input class="checked" type="checkbox"> Sort values</label>
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+</style>
+<label><input type="checkbox"> Sort values</label>
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-  var margin = {top: 40, right: 40, bottom: 30, left: 150},
-          width = 1200 - margin.left - margin.right,
+  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+          width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
-  var commasFormatter = d3.format(",.0f");
+  var formatPercent = d3.format(".0%");
 
   var x = d3.scale.ordinal()
-          .rangeRoundBands([0, width], .1);
+          .rangeRoundBands([0, width], .1, 1);
 
   var y = d3.scale.linear()
-          .range([height,0]);
+          .range([height, 0]);
 
   var xAxis = d3.svg.axis()
           .scale(x)
@@ -96,15 +58,7 @@
   var yAxis = d3.svg.axis()
           .scale(y)
           .orient("left")
-          .tickFormat(function(d){return "$" + commasFormatter(d);});
-
-
-  var tip = d3.tip()
-          .attr('class', 'd3-tip')
-          .offset([-10, 0])
-          .html(function(d) {
-            return "<strong>Average Payments: $</strong><span style='color:red'>" + d.payments + "</span>";
-          })
+          .tickFormat(formatPercent);
 
   var svg = d3.select("body").append("svg")
           .attr("width", width + margin.left + margin.right)
@@ -112,16 +66,14 @@
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.call(tip);
-
-  d3.tsv("data.tsv", type, function(error, data) {
+  d3.tsv("data.tsv", function(error, data) {
 
     data.forEach(function(d) {
       d.payments = +d.payments;
     });
 
-    x.domain(data.map(function(d) { return d.state; }));
-    y.domain([7000, d3.max(data, function(d) { return d.payments; })]);
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d.payments; })]);
 
     svg.append("g")
             .attr("class", "x axis")
@@ -131,13 +83,12 @@
     svg.append("g")
             .attr("class", "y axis")
             .call(yAxis)
-            .append("text")
+            .append("state
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Average Total Payments");
-
+            .text("Frequency");
 
     svg.selectAll(".bar")
             .data(data)
@@ -146,47 +97,39 @@
             .attr("x", function(d) { return x(d.state); })
             .attr("width", x.rangeBand())
             .attr("y", function(d) { return y(d.payments); })
-            .attr("height", function(d) { return height - y(d.payments); })
-//            .on('mouseover', tip.show)
-//            .on('mouseout', tip.hide)
+            .attr("height", function(d) { return height - y(d.payments); });
 
+    d3.select("input").on("change", change);
+
+    var sortTimeout = setTimeout(function() {
+      d3.select("input").property("checked", true).each(change);
+    }, 2000);
+
+    function change() {
+      clearTimeout(sortTimeout);
+
+      // Copy-on-write since tweens are evaluated after a delay.
+      var x0 = x.domain(data.sort(this.checked
+                      ? function(a, b) { return b.payments - a.payments; }
+                      : function(a, b) { return d3.ascending(a.state, b.state); })
+              .map(function(d) { return d.state; }))
+              .copy();
+
+      svg.selectAll(".bar")
+              .sort(function(a, b) { return x0(a.state) - x0(b.state); });
+
+      var transition = svg.transition().duration(750),
+              delay = function(d, i) { return i * 50; };
+
+      transition.selectAll(".bar")
+              .delay(delay)
+              .attr("x", function(d) { return x0(d.state); });
+
+      transition.select(".x.axis")
+              .call(xAxis)
+              .selectAll("g")
+              .delay(delay);
+    }
   });
-
-  d3.select("input").on("change", change);
-
-  var sortTimeout = setTimeout(function() {
-    d3.select("input").property("checked", true).each(change);
-  }, 2000);
-
-  function change() {
-    clearTimeout(sortTimeout);
-
-    // Copy-on-write since tweens are evaluated after a delay.
-    var x0 = x.domain(data.sort(this.checked
-                    ? function(a, b) { return b.payments - a.payments; }
-                    : function(a, b) { return d3.ascending(a.state, b.state); })
-            .map(function(d) { return d.state; }))
-            .copy();
-
-    svg.selectAll(".bar")
-            .sort(function(a, b) { return x0(a.state) - x0(b.state); });
-
-    var transition = svg.transition().duration(750),
-            delay = function(d, i) { return i * 50; };
-
-    transition.selectAll(".bar")
-            .delay(delay)
-            .attr("x", function(d) { return x0(d.state); });
-
-    transition.select(".x.axis")
-            .call(xAxis)
-            .selectAll("g")
-            .delay(delay);
-  }
-
-  function type(d) {
-    d.payments = +d.payments;
-    return d;
-  }
 
 </script>
